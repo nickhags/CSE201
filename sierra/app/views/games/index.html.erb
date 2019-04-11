@@ -1,0 +1,25 @@
+<h1>All Games</h1>
+ 
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Description</th>
+	<th>Developers</th>
+    <th>Platforms</th>
+	<th>URL</th>
+    <th>Price</th>
+    <th></th>
+  </tr>
+ 
+  <% @games.each do |game| %>
+    <tr>
+      <td><%= game.title %></td>
+      <td><%= game.description %></td>
+	  <td><%= game.developers %></td>
+      <td><%= game.platforms %></td>
+	  <td><%= game.url %></td>
+      <td><%= game.price %></td>
+      <td><%= link_to 'Show', game_path(game) %></td>
+    </tr>
+  <% end %>
+</table>
