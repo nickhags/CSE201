@@ -1,0 +1,22 @@
+<h1>Edit Game</h1>
+
+<%= render 'form' %>
+
+<h2>Add an image:</h2>
+<%= form_with(model: [ @game, @game.images.build ], local: true) do |form| %>
+	<p>
+		<%= form.label :url %><br>
+		<%= form.text_field :url %>
+	</p>
+	<p>
+		<%= form.submit %>
+	</p>
+<% end %>
+
+<p>
+  <%= link_to 'Delete Image', [image.game, image],
+	method: :delete,
+	data: { confirm: 'Are you sure?' } %>
+</p>
+
+<%= link_to 'Back', games_path %>

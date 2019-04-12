@@ -1,0 +1,19 @@
+class ImagesController < ApplicationController
+	def create
+		@game = Game.find(params[:game_id])
+		@image = @article.images.create(image_params)
+		redirect_to game_path(@game)
+	end
+
+	def destroy
+		@game = Game.find(params[:game_id])
+		@image = @game.image.find(params[:id])
+		@image.destroy
+		redirect_to game_path(@game)
+	end
+
+	private
+	def image_params
+		params.require(:image).permit(:url)
+	end
+end

@@ -1,0 +1,31 @@
+<%= render "games/header" %>
+<h3>All Games</h3>
+<%= link_to 'New Game', new_game_path %>
+
+<table style="width:100%">
+  <tr>
+    <th>Title</th>
+    <th>Description</th>
+	<th>Developers</th>
+    <th>Platforms</th>
+	<th>URL</th>
+    <th>Price</th>
+    <th></th>
+  </tr>
+ 
+  <% @games.each do |game| %>
+    <tr>
+      <td><%= game.title %></td>
+      <td><%= game.description %></td>
+	  <td><%= game.developers %></td>
+      <td><%= game.platforms %></td>
+	  <td><%= game.url %></td>
+      <td><%= game.price %></td>
+      <td><%= link_to 'Show', game_path(game) %></td>
+      <td><%= link_to 'Edit', edit_game_path(game) %></td>
+      <td><%= link_to 'Delete', game_path(game),
+	      method: :delete,
+	      data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+</table>

@@ -1,0 +1,9 @@
+<%= form_with(model: [ @game, @game.images.build ], local: true) do |form| %>
+	<p>
+		<%= form.label :url %><br>
+		<%= form.text_field :url %>
+	</p>
+	<p>
+		<%= form.submit %>
+	</p>
+<% end %>

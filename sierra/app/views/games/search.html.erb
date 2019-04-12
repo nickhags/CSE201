@@ -1,0 +1,25 @@
+<%= render 'games/header' %>
+<h2>Search Results:</h2>
+<table style="width:100%">
+  <tr>
+    <th>Title</th>
+    <th>Description</th>
+	<th>Developers</th>
+    <th>Platforms</th>
+	<th>Link</th>
+    <th>Price</th>
+    <th></th>
+  </tr>
+  
+  <% @results.each do |result| %>
+    <tr>
+      <td><%= result.title %></td>
+      <td><%= result.description %></td>
+	  <td><%= result.developers %></td>
+      <td><%= result.platforms %></td>
+	  <td><%= result.url %></td>
+      <td><%= result.price %></td>
+      <td><%= link_to 'View', game_path(result) %></td>
+    </tr>
+  <% end %>
+</table>

@@ -1,0 +1,57 @@
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Challenge 01</title>
+    <style>
+        body {
+            background-color: #5fbdff;
+        }
+        
+        .col {
+            background-color: lightgreen;
+            border: 1px solid black;
+        }
+        
+        h1 {
+            display: inline-block;
+            color: white;
+            vertical-align: bottom;
+            padding-bottom: 0;
+            margin-bottom: 0;
+            font-size: 500%;
+        }
+        
+        #headerLogo {
+            display: inline-block;
+        }
+        
+        a {
+            color: black;
+            font-size: 150%;
+        }
+    </style>
+</head>
+ <header>
+        <div class="row">
+            <div class="col-6 justify-content-end align-items-center">
+                <%= link_to image_tag('logo.jpg', :height => "65%", :width => "20%"), url_for({:controller => 'welcome', :action => 'index'}),  :class => 'quick' %>
+                <h1 id="title">Sierra Store</h1>
+            </div>
+
+
+            <div class="col-5 d-flex justify-content-end align-items-center">
+				<%= button_to "View All Games", { :controller => "games", :action => "index" }, :method => :get %>
+                <%= form_tag(search_games_path, method: :get, class: "search-form") do %>
+					<%= text_field_tag(:search, params[:search]) %>
+					<%= submit_tag ("Search") %>
+					<% end %>
+
+                <a class="btn btn-sm btn-outline-secondary" href="login.html">Sign up</a>
+            </div>
+        </div>
+
+</header>
