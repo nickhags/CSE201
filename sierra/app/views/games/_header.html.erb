@@ -49,8 +49,12 @@
 					<%= text_field_tag(:search, params[:search]) %>
 					<%= submit_tag ("Search") %>
 					<% end %>
-
-                <a class="btn btn-sm btn-outline-secondary" href="login.html">Sign up</a>
+                <% if current_user %>
+					Hello, <%= current_user.name %>
+					<%= button_to "Log Out", { :controller => "sessions", :action => "destroy" }, :method => :get %>
+				<% else %>
+					<%= button_to "Log In/Sign Up", { :controller => "sessions", :action => "new" }, :method => :get %>
+				<% end %>
             </div>
         </div>
 
