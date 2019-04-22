@@ -1,6 +1,44 @@
 <h1>Editing User</h1>
 
-<%= render 'form', user: @user %>
+<% if current_user && current_user.role = "admin" %>
+	<%= form_with(model: @user, local: true) do |form| %>
+		<% if @user.errors.any? %>
+			<div id="error_explanation">
+			<h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
 
-<%= link_to 'Show', @user %> |
-<%= link_to 'Back', root_path %>
+			<ul>
+				<% @user.errors.full_messages.each do |message| %>
+				<li><%= message %></li>
+			<% end %>
+			</ul>
+		</div>
+	<% end %>
+
+  <div class="field">
+    <%= form.label :username %>
+    <%= form.text_field :name, id: :user_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :email %>
+    <%= form.text_field :email, id: :user_email %>
+  </div>
+
+  
+    <div class="field">
+	  <%= form.label :role %>
+	  <%= form.text_field :role, id: :user_role %>
+    </div>
+  
+  <div class="actions">
+    <%= form.submit "Done" %>
+  </div>
+<% end %>
+
+<%= link_to 'Quit without saving', root_path %> |
+<%= link_to 'Delete', user_path(@user),
+	      method: :delete,
+	      data: { confirm: 'Are you sure?' } %>
+<% else %>
+	<h3>You cannot edit users</h3>
+<% end %>

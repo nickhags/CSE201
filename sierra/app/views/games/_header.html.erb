@@ -50,7 +50,6 @@
 					<%= submit_tag ("Search") %>
 					<% end %>
                 <% if current_user %>
-					Hello, <%= current_user.name %>
 					<%= button_to "Log Out", { :controller => "sessions", :action => "destroy" }, :method => :get %>
 				<% else %>
 					<%= button_to "Log In/Sign Up", { :controller => "sessions", :action => "new" }, :method => :get %>
