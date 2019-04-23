@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
   root 'welcome#index'
   resources :users
+  resources :applications
+  get 'approve', to: 'applications#approve', as: 'approve'
+
+  get 'reject', to: 'applications#reject', as: 'reject'
+  
+  
   resources :sessions, only: [:new, :create, :destroy]
   get 'signup', to: 'users#new', as: 'signup'
 

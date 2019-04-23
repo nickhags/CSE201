@@ -1,0 +1,42 @@
+<%= render "games/header" %>
+<h2>
+  <strong><%= @application.title %></strong>
+</h2>
+ 
+<p>
+  <strong>Description:</strong>
+  <%= @application.description %>
+</p>
+
+<p>
+  <strong>Developers:</strong>
+  <%= @application.developers %>
+</p>
+<p>
+  <strong>Platforms:</strong>
+  <%= @application.platforms %>
+</p>
+
+<p>
+  <strong>URL:</strong>
+  <%= @application.url %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @application.price %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @application.status %>
+</p>
+
+<p>
+  <strong>Status Comments:</strong>
+  <%= @application.comments %>
+</p>
+
+
+<%= link_to 'Edit', edit_application_path(@application) %> |
+<%= link_to 'Back', applications_path %>

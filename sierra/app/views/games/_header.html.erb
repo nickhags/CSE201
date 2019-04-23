@@ -50,7 +50,16 @@
 					<%= submit_tag ("Search") %>
 					<% end %>
                 <% if current_user %>
-					<%= button_to "Log Out", { :controller => "sessions", :action => "destroy" }, :method => :get %>
+					<li class = "dropdown" style="list-style: none; background-color: #DDDDDD; text-align: center; line-height: 25px; font: bold 11px Arial; color: #333333; padding: 2px 6px 2px 6px; border-top: 1px solid #CCCCCC; border-right: 1px solid #333333; border-bottom: 1px solid #333333; border-left: 1px solid #CCCCCC">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= current_user.name%><b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li><%= button_to "Log Out", { :controller => "sessions", :action => "destroy" }, :method => :get %></li>
+							<% if current_user.role = "admin" %>
+								<li><%= button_to "Applications", { :controller => "applications", :action => "index" }, :method => :get %></li>
+								<li>List Games</li>
+							<% end %>
+						</ul>
+					</li>
 				<% else %>
 					<%= button_to "Log In/Sign Up", { :controller => "sessions", :action => "new" }, :method => :get %>
 				<% end %>

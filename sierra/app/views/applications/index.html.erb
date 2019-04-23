@@ -1,0 +1,35 @@
+<%= render "games/header" %>
+<% if current_user && current_user.role = "admin" %>
+  <h3>All Applications</h3>
+
+  <table style="width:100%">
+	<tr>
+		<th>Title</th>
+		<th>Description</th>
+		<th>Developers</th>
+		<th>Platforms</th>
+		<th>URL</th>
+		<th>Price</th>
+		<th>Status</th>
+		<th>Comments</th>
+		<th></th>
+	</tr>
+ 
+	<% @applications.each do |application| %>
+	  <tr>
+		<td><%= application.title %></td>
+		<td><%= application.description %></td>
+		<td><%= application.developers %></td>
+		<td><%= application.platforms %></td>
+		<td><%= application.url %></td>
+		<td><%= application.price %></td>
+		<td><%= application.status %></td>
+		<td><%= application.comments %></td>
+		<td><%= link_to 'Show', application_path(application) %></td>
+		<td><%= link_to 'Approve', approve_path(application) %></td>
+		</tr>
+	<% end %>
+  </table>
+<% else %>
+	<h3>You do not have permission to view this page<h3>
+<% end %>
