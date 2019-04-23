@@ -40,20 +40,23 @@ class ApplicationsController < ApplicationController
 	end
 	
 	def approve
-		@application = Application.find_by_id(params[:application_id])
-		@game = Game.new
-		@game.create(Application.give(@application))
+	    @application = Application.find(params[:id])
+		hash = {}
+		hash[:title] = @application.title
+		hash[:description] = @application.description
+		hash[:developers] = @application.developers
+		hash[:platforms] = @application.platforms
+		hash[:url] = @application.url
+		hash[:price] = @application.price
+		@game = Game.new(hash)
+		@game.save
+		@application.status = "Approved"
+		@application.save
 		redirect_to games_path
 	end
 	
 	def deny
 	
-	end
-	
-	def give
-		@application = Application.find_by_id(params[:application_id])
-		toRet = [@application.title, application.description, application.developers, application.platforms, application.url, application.price]
-		puts toRet
 	end
 	
 	private

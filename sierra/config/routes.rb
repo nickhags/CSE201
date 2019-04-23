@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
   root 'welcome#index'
   resources :users
-  resources :applications
-  get 'approve', to: 'applications#approve', as: 'approve'
-
-  get 'reject', to: 'applications#reject', as: 'reject'
+  resources :applications do
+	collection do
+		get :approve
+		get :reject
+	end
+  end
   
   
   resources :sessions, only: [:new, :create, :destroy]
