@@ -27,7 +27,7 @@ class ApplicationsController < ApplicationController
 	def update
 		@application = Application.find(params[:id])
 		if @application.update(application_params)
-			redirect_to @application
+			redirect_to applications_path
 		else
 			render 'edit'
 		end
@@ -57,7 +57,8 @@ class ApplicationsController < ApplicationController
 	
 	def reject
 		@application = Application.find(params[:id])
-		
+		@application.status = "Rejected"
+		@application.save
 	end
 	
 	private

@@ -1,0 +1,42 @@
+<%= render "games/header" %>
+<h3>Reject Game Application</h3>
+
+<h2>
+  <strong><%= @application.title %></strong>
+</h2>
+ 
+<p>
+  <strong>Description:</strong>
+  <%= @application.description %>
+</p>
+
+<p>
+  <strong>Developers:</strong>
+  <%= @application.developers %>
+</p>
+<p>
+  <strong>Platforms:</strong>
+  <%= @application.platforms %>
+</p>
+
+<p>
+  <strong>URL:</strong>
+  <%= @application.url %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @application.price %>
+</p>
+
+<%= form_with model: @application, local: true do |form| %>
+        <p>
+			<%= form.label :comments %><br>
+			<%= form.text_area :comments %>
+		</p>
+        <p>
+                <%= form.submit %>
+        </p>
+<% end %>
+
+<%= link_to 'Back', applications_path %>

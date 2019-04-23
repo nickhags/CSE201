@@ -2,16 +2,17 @@
 <% if current_user && current_user.role = "admin" %>
   <h3>All Applications</h3>
 
-  <table style="width:100%">
+  <table border="1">
 	<tr>
-		<th>Title</th>
-		<th>Description</th>
-		<th>Developers</th>
-		<th>Platforms</th>
-		<th>URL</th>
-		<th>Price</th>
-		<th>Status</th>
-		<th>Comments</th>
+		<th width="10%">Title</th>
+		<th width="16%">Description</th>
+		<th width="10%">Developers</th>
+		<th width="10%">Platforms</th>
+		<th width="10%">URL</th>
+		<th width="10%">Price</th>
+		<th width="10%">Status</th>
+		<th width="10%">Comments</th>
+		<th width="14%">Actions</th>
 		<th></th>
 	</tr>
  
@@ -22,13 +23,15 @@
 		<td><%= application.developers %></td>
 		<td><%= application.platforms %></td>
 		<td><%= application.url %></td>
-		<td><%= application.price %></td>
+		<td>$<%= application.price %></td>
 		<td><%= application.status %></td>
 		<td><%= application.comments %></td>
 		<% if application.status != "Approved" %>
 			<td><%= link_to 'Show', application_path(application) %></td>
-			<td><%= link_to 'Approve', approve_applications_path(:id => application.id) %></td>
-			<td><%= link_to 'Reject', reject_applications_path(:id => application.id) %></td>
+			<% if application.status != "Rejected" %>
+				<td><%= link_to 'Approve', approve_applications_path(:id => application.id) %></td>
+				<td><%= link_to 'Reject', reject_applications_path(:id => application.id) %></td>
+			<% end %>
 		<% end %>
 		</tr>
 	<% end %>
