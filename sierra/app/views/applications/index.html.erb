@@ -25,8 +25,11 @@
 		<td><%= application.price %></td>
 		<td><%= application.status %></td>
 		<td><%= application.comments %></td>
-		<td><%= link_to 'Show', application_path(application) %></td>
-		<td><%= link_to 'Approve', approve_applications_path(:id => application.id) %></td>
+		<% if application.status != "Approved" %>
+			<td><%= link_to 'Show', application_path(application) %></td>
+			<td><%= link_to 'Approve', approve_applications_path(:id => application.id) %></td>
+			<td><%= link_to 'Reject', reject_applications_path(:id => application.id) %></td>
+		<% end %>
 		</tr>
 	<% end %>
   </table>

@@ -55,8 +55,9 @@ class ApplicationsController < ApplicationController
 		redirect_to games_path
 	end
 	
-	def deny
-	
+	def reject
+		@application = Application.find(params[:id])
+		
 	end
 	
 	private
