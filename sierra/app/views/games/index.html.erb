@@ -2,32 +2,38 @@
 <h3>All Games</h3>
 <%= link_to 'New Game', new_application_path %>
 
-<table style="width:100%">
-  <tr>
-    <th>Title</th>
-    <th>Description</th>
-	<th>Developers</th>
-    <th>Platforms</th>
-	<th>URL</th>
-    <th>Price</th>
-    <th></th>
-  </tr>
- 
-  <% @games.each do |game| %>
-    <tr>
-      <td><%= game.title %></td>
-      <td><%= game.description %></td>
-	  <td><%= game.developers %></td>
-      <td><%= game.platforms %></td>
-	  <td><%= game.url %></td>
-      <td><%= game.price %></td>
-      <td><%= link_to 'Show', game_path(game) %></td>
-	  <% if current_user && current_user.role = "admin" %>
-		<td><%= link_to 'Edit', edit_game_path(game) %></td>
-		<td><%= link_to 'Delete', game_path(game),
-	      method: :delete,
-	      data: { confirm: 'Are you sure?' } %></td>
-	  <% end %>
-    </tr>
-  <% end %>
+<style>
+	#sort {
+		display: inline-block;
+		float: right;
+		background-color: #DDDDDD;
+		margin-right: 5px;
+	}
+</style>
+
+<div id="sort">
+	<h5><strong>Sort by:</strong></h5>
+	<%= render "sort" %>
+</div>
+
+<table>
+<% @games.each do |game| %>
+    <div class="col-md-4">
+		<div class="card mb-4 shadow-sm">
+			<img class="card-img-top" src="http://placehold.it/500x300" alt="Card image cap">
+			<div class="card-body">
+				<h5 class="card-title"><%= game.title %></h5>
+				<p class="card-text"><%= game.description %></p>
+				<div class="d-flex justify-content-between align-items-center">
+					<div class="btn-group">
+						<%= link_to 'View', game_path(game) %>
+						<%= link_to 'Buy', "http://#{game.url}", :target => "_blank" %>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+<% end %>
 </table>
+
+

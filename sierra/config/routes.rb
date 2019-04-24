@@ -20,6 +20,7 @@ Rails.application.routes.draw do
     resources :images
 	collection do
 		get :search
+		get :sort
 	end
   end
   

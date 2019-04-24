@@ -1,0 +1,7 @@
+<%= form_with do %>
+	<%= radio_button_tag(:sortby, "price") %>
+	<%= label_tag(:sort_price, "Price") %>
+	
+	<%= radio_button_tag(:sortby, "title") %>
+	<%= label_tag(:sort_title, "Title") %>
+<% end %>

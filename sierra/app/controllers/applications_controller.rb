@@ -61,6 +61,7 @@ class ApplicationsController < ApplicationController
 		@application.save
 	end
 	
+	
 	private
 	def application_params
 		params.require(:application).permit(:title, :description, :developers, :platforms, :url, :price, :status, :comments)

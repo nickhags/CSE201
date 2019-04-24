@@ -41,6 +41,11 @@ class GamesController < ApplicationController
 		@game.destroy
 		redirect_to games_path
 	end
+	
+	def sort
+		@games = Game.all.order(name: :desc)
+	end
+	
 	private
 	def game_params
 		params.require(:game).permit(:title, :description, :developers, :platforms, :url, :price, :search)
