@@ -33,6 +33,40 @@
             color: black;
             font-size: 150%;
         }
+		
+		#drop {
+			display: inline;
+			list-style: none;
+			background-color: #DDDDDD;
+			text-align: center;
+			font: bold 16px Arial;
+			color: #333333;
+			padding: 5px 7px 5px 7px;
+			border-top: 1px solid #CCCCCC;
+			border-right: 1px solid #333333;
+			border-bottom: 1px solid #333333;
+			border-left: 1px solid #CCCCCC;
+		}
+		
+		.dropdown {
+			position: relative;
+			display: inline-block
+		}
+		
+		.dropdown-content {
+			display: none;
+			position: absolute;
+			min-width: 160px;
+			box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+			padding: 12px 16px;
+			z-index: 1;
+		}
+		
+		.dropdown:hover .dropdown-content {
+			display: block;
+			right: 0
+		}
+		
     </style>
 </head>
  <header>
@@ -43,27 +77,32 @@
             </div>
 
 
-            <div class="col-5 d-flex justify-content-end align-items-center">
-				<%= button_to "View All Games", { :controller => "games", :action => "index" }, :method => :get %>
+            <div class="col-5 d-flex justify-content-end align-items-center" float:"right" style="margin-left: auto">
+				<%= button_to "All Games", { :controller => "games", :action => "index" }, :method => :get %>
                 <%= form_tag(search_games_path, method: :get, class: "search-form") do %>
 					<%= text_field_tag(:search, params[:search]) %>
 					<%= submit_tag ("Search") %>
 					<% end %>
                 <% if current_user %>
-					<li class = "dropdown" style="list-style: none; background-color: #DDDDDD; text-align: center; line-height: 25px; font: bold 11px Arial; color: #333333; padding: 2px 6px 2px 6px; border-top: 1px solid #CCCCCC; border-right: 1px solid #333333; border-bottom: 1px solid #333333; border-left: 1px solid #CCCCCC">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= current_user.name%><b class="caret"></b></a>
-						<ul class="dropdown-menu">
-							<li><%= button_to "Log Out", { :controller => "sessions", :action => "destroy" }, :method => :get %></li>
+					<div class = "dropdown">
+						<span id="drop"><%= current_user.name%></span>
+						<ul class="dropdown-content">
+							<%= button_to "Log Out", { :controller => "sessions", :action => "destroy" }, :method => :get %>
+							<%= button_to "Submit a game", { :controller => "applications", :action => "new" }, :method => :get %>
 							<% if current_user.role = "admin" %>
-								<li><%= button_to "Applications", { :controller => "applications", :action => "index" }, :method => :get %></li>
-								<li>List Games</li>
+								<%= button_to "Longer title Applications", { :controller => "applications", :action => "index" }, :method => :get %>
+								<%= button_to "Manage Users", { :controller => "users", :action => "index" }, :method => :get %>
 							<% end %>
 						</ul>
-					</li>
+					</div>
 				<% else %>
 					<%= button_to "Log In/Sign Up", { :controller => "sessions", :action => "new" }, :method => :get %>
 				<% end %>
             </div>
         </div>
-
+	<!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js " integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo " crossorigin="anonymous "></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js " integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1 " crossorigin="anonymous "></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js " integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM " crossorigin="anonymous "></script>
 </header>

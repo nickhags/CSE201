@@ -1,7 +1,6 @@
 <%= render 'games/header' %>
 <h2>Search Results:</h2>
-<table style="width:100%" class="sortable">
-<thead>
+<table style="width:100%">
   <tr>
     <th>Title</th>
     <th>Description</th>
@@ -11,7 +10,7 @@
     <th>Price</th>
     <th></th>
   </tr>
-</thead>
+  
   <% @results.each do |result| %>
     <tr>
       <td><%= result.title %></td>

@@ -10,7 +10,7 @@ class ApplicationsController < ApplicationController
 	def create
 		@application = Application.new(application_params)
 		if @application.save
-			redirect_to @application
+			render 'submitted'
 		else
 			render 'new'
 		end
@@ -52,7 +52,7 @@ class ApplicationsController < ApplicationController
 		@game.save
 		@application.status = "Approved"
 		@application.save
-		redirect_to games_path
+		redirect_to applications_path
 	end
 	
 	def reject
