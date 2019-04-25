@@ -1,6 +1,6 @@
 class ApplicationsController < ApplicationController
 	def new
-		@application = Application.new
+		@application = Application.new(status: "Waiting for Approval")
 	end
 	
 	def edit
