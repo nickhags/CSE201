@@ -55,3 +55,54 @@ function filterByName() {
         }
     }
 }
+
+
+
+
+function sortByColumn1And2() {
+    var table, rows, switching, i, x, y, a, b, shouldSwitch;
+    table = document.getElementById("table");
+    switching = true;
+    while (switching) {
+        switching = false;
+        rows = table.getElementsByTagName("tr");
+        for (i = 0; i < (rows.length - 1); i++) {
+            shouldSwitch = false;
+            //First, sort column 1
+            x = rows[i].getElementsByTagName("td")[0];
+            y = rows[i + 1].getElementsByTagName("td")[0];
+            //check if the two rows should switch place:
+            if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                //For number, you can use:
+                //if (Number(x.innerHTML) < Number(y.innerHTML)) 
+
+                //if so, mark as a switch and break the loop:
+                shouldSwitch = true;
+                break;
+            }
+
+        }
+        if (shouldSwitch) {
+            /*If a switch has been marked, make the switchcand mark that a switch has been done:*/
+            rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+            switching = true;
+        }
+    }
+
+    for (i = 0; i < (rows.length - 1); i++) {
+
+        for (j = i + 1; j < (rows.length); j++) {
+            x = rows[i].getElementsByTagName("td")[0];
+            y = rows[j].getElementsByTagName("td")[0];
+            a = rows[i].getElementsByTagName("td")[1];
+            b = rows[j].getElementsByTagName("td")[1];
+            //check if the two rows should switch place:
+            if (x.innerHTM.toLowerCase() == y.innerHTML.toLowerCase()) {
+                //if so, swap
+                if (a.innerHTML.toLowerCase() > b.innerHTML.toLowerCase()) {
+                    rows[i].parentNode.insertBefore(rows[j], rows[i]);
+                }
+            }
+        }
+    }
+}
