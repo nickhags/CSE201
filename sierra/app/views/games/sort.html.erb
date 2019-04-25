@@ -8,33 +8,16 @@
 		float: right;
 		background-color: #DDDDDD;
 		margin-right: 5px;
-		height: 190px;
-		width: 200px;
-		text-align: center;
-	}
-	#filter {
-		position: relative;
-		display: inline-block;
-		bottom: -175px;
-		right: -200px;
-		float: right;
-		background-color: #DDDDDD;
-		height: 290px;
-		width: 200px;
+		height: 200px;
+		width: 150px;
 		text-align: center;
 	}
 </style>
 
-
-	<div id="sort">
-		<h5>Sort by:</h5>
-		<%= render 'sort' %>
-	</div>
-	<br>
-	<div id="filter">
-		<h5>Filter by:</h5>
-		<%= render 'filter' %>
-	</div>
+<div id="sort">
+	<h5>Sort by:</h5>
+	<%= render 'sort' %>
+</div>
 
 <table>
 <% @games.each do |game| %>

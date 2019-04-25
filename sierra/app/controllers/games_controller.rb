@@ -43,7 +43,33 @@ class GamesController < ApplicationController
 	end
 	
 	def sort
-		@games = Game.all.order(name: :desc)
+		@order = params[:sort]
+		 if @order == "titleasc"
+			@games = Game.all.order(:title)
+		 end
+		 if @order == "titledesc"
+			@games = Game.all.order(title: :desc)
+		 end
+		 if @order == "priceasc"
+			@games = Game.all.order(:price)
+		 end
+		 if @order == "pricedesc"
+			@games = Game.all.order(price: :desc)
+		 end
+	end
+	
+	def filter
+		if !params[:os].blank?
+			@parameter = "%%" + params[:os].downcase + "%%"
+			@games = Game.all.where("lower(platforms) LIKE :search", search: @parameter)
+		end
+		if !params[:price].blank?
+			
+		end
+		if !params[:pricemax].blank?
+			
+		end
+		
 	end
 	
 	private
