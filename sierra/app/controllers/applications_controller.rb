@@ -1,6 +1,6 @@
 class ApplicationsController < ApplicationController
 	def new
-		@application = Application.new(status: "Waiting for Approval")
+		@application = Application.new()
 	end
 	
 	def edit
@@ -9,6 +9,7 @@ class ApplicationsController < ApplicationController
 
 	def create
 		@application = Application.new(application_params)
+		@application.status = "Waiting for Approval"
 		if @application.save
 			render 'submitted'
 		else
