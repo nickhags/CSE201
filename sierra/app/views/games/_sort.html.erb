@@ -1,8 +1,55 @@
-<form action = "/games/sort">
+<form action="#" id="demoForm" class="demoForm">
+<fieldset>
+<p>
 	<input type="radio" name="sort" value="titleasc">Title (A to Z)<br>
 	<input type="radio" name="sort" value="titledesc">Title (Z to A)<br>
 	<input type="radio" name="sort" value="priceasc">Price (low to high)<br>
 	<input type="radio" name="sort" value="pricedesc">Price (high to low)<br>
 	<br>
-	<input type="submit"/>
+	<button type="button" name="sortaction">Sort!</button></p>
+	</fieldset>
 </form>
+
+<script>
+document.getElementById('demoForm').onsubmit = function() {
+	var s = document.getElementById(this, "sort");
+    var table, rows, switching, i, x, y, shouldSwitch;
+    table = document.getElementById(this, "games");
+    switching = true;
+
+    while (switching) {
+
+        switching = false;
+        rows = table.rows;
+
+        for (i = 1; i < (rows.length - 1); i++) {
+            shouldSwitch = false;
+			if (s == "titleasc" || s == "titledesc") {
+				x = rows[i].getElementsByTagName("td")[1];
+				y = rows[i + 1].getElementsByTagName("td")[1];
+			} else {
+				x = rows[i].getElementsByTagName("td")[3];
+				y = rows[i + 1].getElementsByTagName("td")[3];
+			}
+			if (s == "titleasc" || s == "priceasc") {
+				if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+
+					shouldSwitch = true;
+					break;
+				}
+			} else {
+				if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+
+					shouldSwitch = true;
+					break;
+			}
+        }
+        if (shouldSwitch) {
+
+
+            rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+            switching = true;
+        }
+    }
+}
+</script>

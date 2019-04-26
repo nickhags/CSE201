@@ -12,48 +12,101 @@
 		width: 200px;
 		text-align: center;
 	}
-	#filter {
-		position: relative;
-		display: inline-block;
-		bottom: -175px;
-		right: -200px;
-		float: right;
-		background-color: #DDDDDD;
-		height: 290px;
-		width: 200px;
-		text-align: center;
-	}
 </style>
 
+<script type="text/javascript">
+function sort() {
+	var s = document.getElementById(this, "sort");
+    var table, rows, switching, i, x, y, shouldSwitch;
+    table = document.getElementById(this, "games");
+    switching = true;
 
-	<div id="sort">
-		<h5>Sort by:</h5>
-		<%= render 'sort' %>
-	</div>
-	<br>
-	<div id="filter">
-		<h5>Filter by:</h5>
-		<%= render 'filter' %>
-	</div>
+    while (switching) {
 
-<table>
+        switching = false;
+        rows = table.rows;
+
+        for (i = 1; i < (rows.length - 1); i++) {
+            shouldSwitch = false;
+			if (s == "titleasc") {
+				x = rows[i].getElementsByTagName("td")[1];
+				y = rows[i + 1].getElementsByTagName("td")[1];
+				if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+
+					shouldSwitch = true;
+					break;
+				}
+			} 
+			if (s == "titledesc")
+				x = rows[i].getElementsByTagName("td")[1];
+				y = rows[i + 1].getElementsByTagName("td")[1];
+				if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+
+					shouldSwitch = true;
+					break;
+				}
+			}
+			if (s == "priceasc") {
+				x = rows[i].getElementsByTagName("td")[3];
+				y = rows[i + 1].getElementsByTagName("td")[3];
+				if (x.innerHTML.substring(1) > y.innerHTML.substring(1)) {
+
+					shouldSwitch = true;
+					break;
+				}
+			} 
+			if (s == "pricedesc") {
+				x = rows[i].getElementsByTagName("td")[3];
+				y = rows[i + 1].getElementsByTagName("td")[3];
+				if (x.innerHTML.substring(1) < y.innerHTML.substring(1)) {
+
+					shouldSwitch = true;
+					break;
+				}
+			}
+        }
+        if (shouldSwitch) {
+            rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+            switching = true;
+        }
+    }
+}
+</script>
+
+<div id="sort">
+	<h5>Sort By:</h5>
+	<form onsubmit="sort()">
+		<fieldset>
+		<p>
+		<input type="radio" name="sort" value="titleasc">Title (A to Z)<br>
+		<input type="radio" name="sort" value="titledesc">Title (Z to A)<br>
+		<input type="radio" name="sort" value="priceasc">Price (low to high)<br>
+		<input type="radio" name="sort" value="pricedesc">Price (high to low)<br></p>
+		<br>
+		<input type="submit">
+		</fieldset>
+	</form>
+</div>
+
+<table border="1" id="games" style="text-align: center">
+<body>
 <% @games.each do |game| %>
-    <div class="col-md-4">
-		<div class="card mb-4 shadow-sm">
-			<img class="card-img-top" src="http://placehold.it/500x300" alt="Card image cap">
-			<div class="card-body">
-				<h5 class="card-title"><%= game.title %></h5>
-				<p class="card-text"><%= game.description %></p>
-				<div class="d-flex justify-content-between align-items-center">
-					<div class="btn-group">
-						<%= link_to 'View', game_path(game) %>
-						<%= link_to 'Buy', "http://#{game.url}", :target => "_blank" %>
-					</div>
-				</div>
+	<tr>
+		<td width="350" height="200"><img class="card-img-top" src="http://placehold.it/500x300" alt="Card image cap"></td>
+		<td width="200" height="200"><h5 class="card-title"><%= game.title %></h5></td>
+		<td width="300" height="200"><div style="position:relative">			
+			<p class="card-text"><%= game.description %></p>
+			<div class="btn-group " style="bottom:0">
+				<%= link_to 'View', game_path(game) %> |
+				<%= link_to 'Buy', "http://#{game.url}", :target => "_blank" %>
 			</div>
-		</div>
-	</div>
+		</div></td>
+		<td width="50" height="200">$<%= game.price %></td>
+			
 <% end %>
+</body>
 </table>
 
 
+
+ 
