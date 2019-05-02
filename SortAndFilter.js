@@ -1,10 +1,15 @@
+$(document).ready(function() {
+    $('#t1').DataTable();
+});
+
+
 //You can change the number in line 20 and 21 to sort by name or anything you want
 
 function sort() {
 
     var table, rows, switching, i, x, y, shouldSwitch;
     //match the table's ID below
-    table = document.getElementById("tableId");
+    table = document.getElementById("mytable1");
     switching = true;
 
     while (switching) {
@@ -32,8 +37,7 @@ function sort() {
             switching = true;
         }
     }
-<<<<<<< HEAD
-=======
+
 }
 
 function filterByName() {
@@ -107,5 +111,6 @@ function sortByColumn1And2() {
             }
         }
     }
->>>>>>> 90400cdc06f2cadfe625fa66a06413cdfbe25c2e
+
+
 }
