@@ -92,7 +92,10 @@ function sort() {
 <body>
 <% @games.each do |game| %>
 	<tr>
-		<td width="350" height="200"><img class="card-img-top" src="http://placehold.it/500x300" alt="Card image cap"></td>
+		<% game.images.each do |image| %>
+			<td width="350" height="200"><%= image_tag(image.url, size: "350x200", :alt => "rss feed") %></td>
+			<% break %>
+		<% end %>
 		<td width="200" height="200"><h5 class="card-title"><%= game.title %></h5></td>
 		<td width="300" height="200"><div style="position:relative">			
 			<p class="card-text"><%= game.description %></p>
@@ -101,7 +104,7 @@ function sort() {
 				<%= link_to 'Buy', "http://#{game.url}", :target => "_blank" %>
 			</div>
 		</div></td>
-		<td width="50" height="200">$<%= game.price %></td>
+		<td width="70" height="200">$<%= game.price %></td>
 			
 <% end %>
 </body>

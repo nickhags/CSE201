@@ -1,6 +1,8 @@
-<%= image_tag(image.url, :alt => "rss feed") %>
+<%= image_tag(image.url, size: "500x300", :alt => "rss feed") %>
+<% if current_user && current_user.role = "admin" %>
 <p>
   <%= link_to 'Delete Image', [ image.game, image ],
 	method: :delete,
 	data: { confirm: 'Are you sure?' } %>
 </p>
+<% end %>

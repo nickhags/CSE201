@@ -7,4 +7,7 @@
 <%= render 'images/form' %>
 
 
+<%= link_to 'Delete Game', [ @game ],
+	method: :delete,
+	data: { confirm: 'Are you sure?' } %> 
 <%= link_to 'Back', games_path %>
