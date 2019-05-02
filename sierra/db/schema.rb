@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190422223727) do
+ActiveRecord::Schema.define(version: 20190422214856) do
 
-# Could not dump table "applications" because of following StandardError
-#   Unknown type 'type' for column 'status'
+  create_table "applications", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.text "developers"
+    t.text "platforms"
+    t.string "url"
+    t.float "price"
+    t.string "status"
+    t.text "comments"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "games", force: :cascade do |t|
     t.string "title"
@@ -34,7 +44,13 @@ ActiveRecord::Schema.define(version: 20190422223727) do
     t.index ["game_id"], name: "index_images_on_game_id"
   end
 
-# Could not dump table "users" because of following StandardError
-#   Unknown type 'type' for column 'role'
+  create_table "users", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.string "password_digest"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "role"
+  end
 
 end

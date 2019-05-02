@@ -8,4 +8,8 @@ class GameTest < ActiveSupport::TestCase
 	game = Game.new
    	assert game.save
    end
+test "should not save article without title" do
+  game = Game.new
+  assert_not game.save
+end
 end
