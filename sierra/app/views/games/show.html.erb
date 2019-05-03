@@ -30,6 +30,8 @@
 
 <h2>Images</h2>
 <%= render @game.images %>
-
+<br>
+<% if current_user && current_user.role = "admin" %>
 <%= link_to 'Edit', edit_game_path(@game) %> |
+<% end %>
 <%= link_to 'Back', games_path %>

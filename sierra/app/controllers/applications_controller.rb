@@ -51,6 +51,14 @@ class ApplicationsController < ApplicationController
 		hash[:price] = @application.price
 		@game = Game.new(hash)
 		@game.save
+		images = @application.images.split(/\s*,\s*/)
+		images.each do |image|
+			image_param = {}
+			image_param[:url] = image
+			@game.images.create(image_param) 
+		end
+		
+		@game.save
 		@application.status = "Approved"
 		@application.save
 		redirect_to applications_path
@@ -65,6 +73,6 @@ class ApplicationsController < ApplicationController
 	
 	private
 	def application_params
-		params.require(:application).permit(:title, :description, :developers, :platforms, :url, :price, :status, :comments)
+		params.require(:application).permit(:title, :description, :developers, :platforms, :url, :price, :status, :comments, :images)
 	end
 end

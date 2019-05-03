@@ -2,58 +2,51 @@
 <h3>All Games</h3>
 <%= link_to 'New Game', new_application_path %>
 
-<style>
-	#sort {
-		display: inline-block;
-		float: right;
-		background-color: #DDDDDD;
-		margin-right: 5px;
-		height: 190px;
-		width: 200px;
-		text-align: center;
-	}
-	#filter {
-		position: relative;
-		display: inline-block;
-		bottom: -175px;
-		right: -200px;
-		float: right;
-		background-color: #DDDDDD;
-		height: 290px;
-		width: 200px;
-		text-align: center;
-	}
-</style>
 
-
-	<div id="sort">
-		<h5>Sort by:</h5>
-		<%= render 'sort' %>
-	</div>
-	<br>
-	<div id="filter">
-		<h5>Filter by:</h5>
-		<%= render 'filter' %>
-	</div>
-
-<table>
+<table border="1" id="games" style="text-align: center">
+	<thead>
+		<tr>
+			<th></th>
+			<th>Title</th>
+			<th>Description</th>
+			<th>Price</th>
+		</tr>
+	</thead>
+	<tbody>
 <% @games.each do |game| %>
-    <div class="col-md-4">
-		<div class="card mb-4 shadow-sm">
-			<img class="card-img-top" src="http://placehold.it/500x300" alt="Card image cap">
-			<div class="card-body">
-				<h5 class="card-title"><%= game.title %></h5>
-				<p class="card-text"><%= game.description %></p>
-				<div class="d-flex justify-content-between align-items-center">
-					<div class="btn-group">
-						<%= link_to 'View', game_path(game) %>
-						<%= link_to 'Buy', "http://#{game.url}", :target => "_blank" %>
-					</div>
-				</div>
+	<tr>
+		<% game.images.each do |image| %>
+			<td width="350" height="200"><%= image_tag(image.url, size: "350x200", :alt => "rss feed") %></td>
+			<% break %>
+		<% end %>
+		<td width="200" height="200"><h5 class="card-title"><%= game.title %></h5></td>
+		<td width="300" height="200"><div style="position:relative">			
+			<p class="card-text"><%= game.description %></p>
+			<div class="btn-group " style="bottom:0">
+				<%= link_to 'View', game_path(game) %> |
+				<%= link_to 'Buy', "http://#{game.url}", :target => "_blank" %>
 			</div>
-		</div>
-	</div>
-<% end %>
+		</div></td>
+		<td width="70" height="200">$<%= game.price %></td>
+			
+	<% end %>
+	</tbody>
 </table>
 
 
+<script src="https://code.jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.0/dist/jquery.validate.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src=" https://code.jquery.com/jquery-3.3.1.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css"></script>
+<script>
+	$(document).ready(function() {
+		$('#games').DataTable();
+        });
+</script>
+
+
+ 

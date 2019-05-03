@@ -1,4 +1,8 @@
 class ImagesController < ApplicationController
+	def new
+		@image = Image.new
+	end
+	
 	def create
 		@game = Game.find(params[:game_id])
 		@image = @game.images.create(image_params)
