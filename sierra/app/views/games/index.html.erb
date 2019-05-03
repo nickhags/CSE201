@@ -2,94 +2,17 @@
 <h3>All Games</h3>
 <%= link_to 'New Game', new_application_path %>
 
-<style>
-	#sort {
-		display: inline-block;
-		float: right;
-		background-color: #DDDDDD;
-		margin-right: 5px;
-		height: 190px;
-		width: 200px;
-		text-align: center;
-	}
-</style>
-
-<script type="text/javascript">
-function sort() {
-	var s = document.getElementById(this, "sort");
-    var table, rows, switching, i, x, y, shouldSwitch;
-    table = document.getElementById(this, "games");
-    switching = true;
-
-    while (switching) {
-
-        switching = false;
-        rows = table.rows;
-
-        for (i = 1; i < (rows.length - 1); i++) {
-            shouldSwitch = false;
-			if (s == "titleasc") {
-				x = rows[i].getElementsByTagName("td")[1];
-				y = rows[i + 1].getElementsByTagName("td")[1];
-				if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
-
-					shouldSwitch = true;
-					break;
-				}
-			} 
-			if (s == "titledesc")
-				x = rows[i].getElementsByTagName("td")[1];
-				y = rows[i + 1].getElementsByTagName("td")[1];
-				if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
-
-					shouldSwitch = true;
-					break;
-				}
-			}
-			if (s == "priceasc") {
-				x = rows[i].getElementsByTagName("td")[3];
-				y = rows[i + 1].getElementsByTagName("td")[3];
-				if (x.innerHTML.substring(1) > y.innerHTML.substring(1)) {
-
-					shouldSwitch = true;
-					break;
-				}
-			} 
-			if (s == "pricedesc") {
-				x = rows[i].getElementsByTagName("td")[3];
-				y = rows[i + 1].getElementsByTagName("td")[3];
-				if (x.innerHTML.substring(1) < y.innerHTML.substring(1)) {
-
-					shouldSwitch = true;
-					break;
-				}
-			}
-        }
-        if (shouldSwitch) {
-            rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-            switching = true;
-        }
-    }
-}
-</script>
-
-<div id="sort">
-	<h5>Sort By:</h5>
-	<form onsubmit="sort()">
-		<fieldset>
-		<p>
-		<input type="radio" name="sort" value="titleasc">Title (A to Z)<br>
-		<input type="radio" name="sort" value="titledesc">Title (Z to A)<br>
-		<input type="radio" name="sort" value="priceasc">Price (low to high)<br>
-		<input type="radio" name="sort" value="pricedesc">Price (high to low)<br></p>
-		<br>
-		<input type="submit">
-		</fieldset>
-	</form>
-</div>
 
 <table border="1" id="games" style="text-align: center">
-<body>
+	<thead>
+		<tr>
+			<th></th>
+			<th>Title</th>
+			<th>Description</th>
+			<th>Price</th>
+		</tr>
+	</thead>
+	<tbody>
 <% @games.each do |game| %>
 	<tr>
 		<% game.images.each do |image| %>
@@ -106,10 +29,24 @@ function sort() {
 		</div></td>
 		<td width="70" height="200">$<%= game.price %></td>
 			
-<% end %>
-</body>
+	<% end %>
+	</tbody>
 </table>
 
+
+<script src="https://code.jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.0/dist/jquery.validate.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src=" https://code.jquery.com/jquery-3.3.1.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css"></script>
+<script>
+	$(document).ready(function() {
+		$('#games').DataTable();
+        });
+</script>
 
 
  
