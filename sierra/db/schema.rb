@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190502210140) do
+ActiveRecord::Schema.define(version: 20190505022407) do
 
   create_table "applications", force: :cascade do |t|
     t.string "title"
@@ -42,6 +42,12 @@ ActiveRecord::Schema.define(version: 20190502210140) do
     t.integer "game_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "picture_file_name"
+    t.string "picture_content_type"
+    t.integer "picture_file_size"
+    t.datetime "picture_updated_at"
+    t.integer "application_id"
+    t.index ["application_id"], name: "index_images_on_application_id"
     t.index ["game_id"], name: "index_images_on_game_id"
   end
 
@@ -49,9 +55,9 @@ ActiveRecord::Schema.define(version: 20190502210140) do
     t.string "name"
     t.string "email"
     t.string "password_digest"
+    t.string "role"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "role"
   end
 
 end

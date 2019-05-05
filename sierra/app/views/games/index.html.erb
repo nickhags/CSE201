@@ -16,7 +16,7 @@
 <% @games.each do |game| %>
 	<tr>
 		<% game.images.each do |image| %>
-			<td width="350" height="200"><%= image_tag(image.url, size: "350x200", :alt => "rss feed") %></td>
+			<td width="350" height="200"><%= image_tag(image.picture.url, size: "350x200", :alt => "rss feed") %></td>
 			<% break %>
 		<% end %>
 		<td width="200" height="200"><h5 class="card-title"><%= game.title %></h5></td>

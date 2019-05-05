@@ -1,6 +1,6 @@
 class ApplicationsController < ApplicationController
 	def new
-		@application = Application.new()
+		@application = Application.new
 	end
 	
 	def edit
@@ -73,6 +73,6 @@ class ApplicationsController < ApplicationController
 	
 	private
 	def application_params
-		params.require(:application).permit(:title, :description, :developers, :platforms, :url, :price, :status, :comments, :images)
+		params.require(:application).permit(:title, :description, :developers, :platforms, :url, :price, :status, :comments, images_attributes: [ :picture ])
 	end
 end

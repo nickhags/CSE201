@@ -1,4 +1,4 @@
-<%= form_with model: @game, local: true do |form| %>
+<%= form_with model: @game, html: {multipart: true } do |form| %>
         <p>
                 <%= form.label :title %><br>
                 <%= form.text_field :title %>
@@ -23,6 +23,13 @@
                 <%= form.label :price %><br>
                 $<%= form.text_field :price %>
         </p>
+	<h2>Picture File Upload</h2>	
+	<%= form.fields_for :images do |image| %>
+	<p>
+		<%= image.label :picture %><br>
+		<%= image.file_field :picture %>
+	</p>	
+	<% end %>
         <p>
                 <%= form.submit %>
         </p>

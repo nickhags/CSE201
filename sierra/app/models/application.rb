@@ -1,5 +1,7 @@
 class Application < ApplicationRecord
-	
+	has_many :images
+	accepts_nested_attributes_for :images
+
 	validates :title, presence: true
 	validates :description, presence: true
 	validates :developers, presence: true
