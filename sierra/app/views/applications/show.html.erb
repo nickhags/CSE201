@@ -1,4 +1,6 @@
 <%= render "games/header" %>
+
+<%= image_tag @application.cover_photo.url %>
 <h2>
   <strong><%= @application.title %></strong>
 </h2>
@@ -37,7 +39,6 @@
   <%= @application.comments %>
 </p>
 
-<%= render @application.images %>
 <br>
 
 <%= link_to 'Edit', edit_application_path(@application) %> |

@@ -1,4 +1,4 @@
-<%= form_for (setup_application(@application)) do |form| %>
+<%= form_for @application do |form| %>
         <p>
                 <%= form.label :title %><br>
                 <%= form.text_field :title %>
@@ -23,13 +23,10 @@
                 <%= form.label :price %><br>
                 <%= form.text_field :price %>
         </p>
-	<h2>Picture File Upload</h2>	
-	<%= form.fields_for :images, Image. new do |pic| %>
 	<p>
-		<%= pic.label :picture %><br>
-		<%= pic.file_field :picture %>
+		<%= form.label :cover_photo %><br>
+		<%= form.file_field :cover_photo %>
 	</p>
-	<% end %>
         <p>
                 <%= form.submit %>
         </p>

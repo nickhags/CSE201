@@ -17,12 +17,9 @@ Rails.application.routes.draw do
   get 'logout', to: 'sessions#destroy', as: 'logout'
 
   resources :games do
-    resources :images
 	collection do
 		get :search
-		get :sort
 	end
-  end
-  
+end
 end
 

@@ -1,6 +1,6 @@
 class Application < ApplicationRecord
-	has_many :images
-	accepts_nested_attributes_for :images
+	has_attached_file :cover_photo
+	validates_attachment_content_type :cover_photo, content_type: /\Aimage\/.*\z/
 
 	validates :title, presence: true
 	validates :description, presence: true

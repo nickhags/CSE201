@@ -23,13 +23,10 @@
                 <%= form.label :price %><br>
                 $<%= form.text_field :price %>
         </p>
-	<h2>Picture File Upload</h2>	
-	<%= form.fields_for :images do |image| %>
 	<p>
-		<%= image.label :picture %><br>
-		<%= image.file_field :picture %>
+		<%= form.label :cover_photo %><br>
+		<%= form.file_field :cover_photo %>
 	</p>	
-	<% end %>
         <p>
                 <%= form.submit %>
         </p>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190505022407) do
+ActiveRecord::Schema.define(version: 20190505200742) do
 
   create_table "applications", force: :cascade do |t|
     t.string "title"
@@ -21,9 +21,12 @@ ActiveRecord::Schema.define(version: 20190505022407) do
     t.float "price"
     t.string "status"
     t.text "comments"
-    t.text "images"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "cover_photo_file_name"
+    t.string "cover_photo_content_type"
+    t.integer "cover_photo_file_size"
+    t.datetime "cover_photo_updated_at"
   end
 
   create_table "games", force: :cascade do |t|
@@ -35,20 +38,10 @@ ActiveRecord::Schema.define(version: 20190505022407) do
     t.string "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "images", force: :cascade do |t|
-    t.string "url"
-    t.integer "game_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "picture_file_name"
-    t.string "picture_content_type"
-    t.integer "picture_file_size"
-    t.datetime "picture_updated_at"
-    t.integer "application_id"
-    t.index ["application_id"], name: "index_images_on_application_id"
-    t.index ["game_id"], name: "index_images_on_game_id"
+    t.string "cover_photo_file_name"
+    t.string "cover_photo_content_type"
+    t.integer "cover_photo_file_size"
+    t.datetime "cover_photo_updated_at"
   end
 
   create_table "users", force: :cascade do |t|
