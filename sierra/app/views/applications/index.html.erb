@@ -1,7 +1,7 @@
 <%= render "games/header" %>
 <% if current_user && current_user.role = "admin" %>
 <head>
-  <h3>All Applications</h3>
+  <h3>Pending Applications</h3>
 </head>
   <table>
 	<tr>
@@ -16,6 +16,7 @@
 		<th width="14%">Actions</th>
 	</tr>
 	<% @applications.each do |application| %>
+	<% if application.status != "Approved" %>
 	  <tr>
 		<td><%= application.title %></td>
 		<td><%= application.description %></td>
@@ -25,16 +26,15 @@
 		<td>$<%= application.price %></td>
 		<td><%= application.status %></td>
 		<td><%= application.comments %></td>
-		<% if application.status != "Approved" %>
-			<td><%= link_to 'Show', application_path(application) %></td>
-			<% if application.status != "Rejected" %>
-				<td><%= link_to 'Approve', approve_applications_path(:id => application.id) %></td>
-				<td><%= link_to 'Reject', reject_applications_path(:id => application.id) %></td>
-			<% end %>
+		<td><%= link_to 'Show', application_path(application) %></td>
+		<% if application.status != "Rejected" %>
+			<td><%= link_to 'Approve', approve_applications_path(:id => application.id) %></td>
+			<td><%= link_to 'Reject', reject_applications_path(:id => application.id) %></td>
 		<% end %>
 		</tr>
 	<% end %>
+	<% end %>
   </table>
 <% else %>
-	<h3>You do not have permission to view this page<h3>
+	<h3>You do not have permission to view this page</h3>
 <% end %>

@@ -1,8 +1,8 @@
 <%= render "games/header" %>
+<br>
 <h3>All Games</h3>
-<%= link_to 'New Game', new_application_path %>
 
-
+<br>
 <table border="1" id="games" style="text-align: center">
 	<thead>
 		<tr>
@@ -15,16 +15,13 @@
 	<tbody>
 <% @games.each do |game| %>
 	<tr>
-		<% game.images.each do |image| %>
-			<td width="350" height="200"><%= image_tag(image.url, size: "350x200", :alt => "rss feed") %></td>
-			<% break %>
-		<% end %>
+		<td width="350" height="200"><%= image_tag game.cover_photo.url, size: "350x200", :alt => "rss feed" %></td>
 		<td width="200" height="200"><h5 class="card-title"><%= game.title %></h5></td>
 		<td width="300" height="200"><div style="position:relative">			
 			<p class="card-text"><%= game.description %></p>
 			<div class="btn-group " style="bottom:0">
 				<%= link_to 'View', game_path(game) %> |
-				<%= link_to 'Buy', "http://#{game.url}", :target => "_blank" %>
+				<%= link_to 'Buy', "#{game.url}", :target => "_blank" %>
 			</div>
 		</div></td>
 		<td width="70" height="200">$<%= game.price %></td>

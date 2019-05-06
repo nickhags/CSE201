@@ -1,37 +1,92 @@
 <%= render "games/header" %>
-<p>
-  <strong>Title:</strong>
-  <%= @game.title %>
-</p>
- 
-<p>
-  <strong>Description:</strong>
-  <%= @game.description %>
-</p>
 
-<p>
-  <strong>Developers:</strong>
-  <%= @game.developers %>
-</p>
-<p>
-  <strong>Platforms:</strong>
-  <%= @game.platforms %>
-</p>
 
-<p>
-  <strong>URL:</strong>
-  <%= @game.url %>
-</p>
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<p>
-  <strong>Price:</strong>
-  <%= @game.price %>
-</p>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Game</title>
+    <style>
+        body {
+            background-color: #5fbdff;
+        }
+        
+        .col {
+            background-color: lightgreen;
+            border: 1px solid black;
+        }
+        
+        h1 {
+            display: inline-block;
+            color: white;
+            vertical-align: bottom;
+            padding-bottom: 0;
+            margin-bottom: 0;
+            font-size: 500%;
+        }
+        
+        #headerLogo {
+            display: inline-block;
+        }
+        
+        .nav-link {
+            color: black;
+            font-size: 150%;
+        }
+    </style>
+</head>
 
-<h2>Images</h2>
-<%= render @game.images %>
-<br>
-<% if current_user && current_user.role = "admin" %>
-<%= link_to 'Edit', edit_game_path(@game) %> |
-<% end %>
-<%= link_to 'Back', games_path %>
+<body>
+
+
+    <div class="row">
+        
+        <div class="container">
+
+            <!-- Portfolio Item Heading -->
+            <h1 class="my-4"><%= @game.title %></h1>
+
+            <!-- Portfolio Item Row -->
+            <div class="row">
+
+                <div class="col-md-8">
+                    <%= image_tag @game.cover_photo.url, size: "700x500" %>
+                </div>
+
+                <div class="col-md-4">
+                    <h3 class="my-3"><strong>Description</strong></h3>
+                    <p><%= @game.description %></p>
+                    <h3 class="my-3"><strong>Game Details</strong></h3>
+                    <h5>Platforms</h5><br>
+			<p><%= @game.platforms %></p>
+                    <h5>Developers</h5>
+			<p><%= @game.developers %></p>
+                    
+                    <h3 class="my-3">Price</h3>
+			<p><%= @game.price %></p>
+                    <% if current_user && current_user.role = "admin" %>
+			<%= link_to 'Edit', edit_game_path(@game) %>
+			<% end %>
+                </div>
+
+            </div>
+            <!-- /.row -->
+
+        </div>
+        <!-- /.container -->
+    </div>
+
+
+
+    </section>
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js " integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo " crossorigin="anonymous "></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js " integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1 " crossorigin="anonymous "></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js " integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM " crossorigin="anonymous "></script>
+</body>

@@ -1,4 +1,4 @@
-<%= form_with model: @application, local: true do |form| %>
+<%= form_for @application do |form| %>
         <p>
                 <%= form.label :title %><br>
                 <%= form.text_field :title %>
@@ -23,12 +23,10 @@
                 <%= form.label :price %><br>
                 <%= form.text_field :price %>
         </p>
-		
-		<p>
-                <%= form.label :images %><br>
-                <%= form.text_area :images %>
-        </p>
-
+	<p>
+		<%= form.label :cover_photo %><br>
+		<%= form.file_field :cover_photo %>
+	</p>
         <p>
                 <%= form.submit %>
         </p>
