@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20190505200742) do
     t.float "price"
     t.string "status"
     t.text "comments"
+    t.text "images"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "cover_photo_file_name"
@@ -42,6 +43,14 @@ ActiveRecord::Schema.define(version: 20190505200742) do
     t.string "cover_photo_content_type"
     t.integer "cover_photo_file_size"
     t.datetime "cover_photo_updated_at"
+  end
+
+  create_table "images", force: :cascade do |t|
+    t.string "url"
+    t.integer "game_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["game_id"], name: "index_images_on_game_id"
   end
 
   create_table "users", force: :cascade do |t|

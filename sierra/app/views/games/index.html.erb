@@ -1,8 +1,8 @@
 <%= render "games/header" %>
+<br>
 <h3>All Games</h3>
-<%= link_to 'New Game', new_application_path %>
 
-
+<br>
 <table border="1" id="games" style="text-align: center">
 	<thead>
 		<tr>
@@ -21,7 +21,7 @@
 			<p class="card-text"><%= game.description %></p>
 			<div class="btn-group " style="bottom:0">
 				<%= link_to 'View', game_path(game) %> |
-				<%= link_to 'Buy', "http://#{game.url}", :target => "_blank" %>
+				<%= link_to 'Buy', "#{game.url}", :target => "_blank" %>
 			</div>
 		</div></td>
 		<td width="70" height="200">$<%= game.price %></td>

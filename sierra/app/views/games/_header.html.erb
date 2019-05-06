@@ -88,7 +88,7 @@
 						<ul class="dropdown-content">
 							<%= button_to "Log Out", { :controller => "sessions", :action => "destroy" }, :method => :get %>
 							<%= button_to "Submit a game", { :controller => "applications", :action => "new" }, :method => :get %>
-							<% if current_user.role = "admin" %>
+							<% if current_user.role == "admin" %>
 								<%= button_to "Manage Applications", { :controller => "applications", :action => "index" }, :method => :get %>
 								<%= button_to "Manage Users", { :controller => "users", :action => "index" }, :method => :get %>
 							<% end %>
