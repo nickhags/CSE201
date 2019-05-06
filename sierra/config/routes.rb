@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'welcome#index'
+  root 'games#index'
   resources :users
   resources :applications do
 	collection do

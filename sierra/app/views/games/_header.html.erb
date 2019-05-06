@@ -72,13 +72,12 @@
  <header>
         <div class="row">
             <div class="col-6 justify-content-end align-items-center">
-                <%= link_to image_tag('logo.jpg', :height => "65%", :width => "20%"), url_for({:controller => 'welcome', :action => 'index'}),  :class => 'quick' %>
+                <%= link_to image_tag('logo.jpg', :height => "65%", :width => "20%"), url_for({:controller => 'games', :action => 'index'}),  :class => 'quick' %>
                 <h1 id="title">Sierra Store</h1>
             </div>
 
 
             <div class="col-5 d-flex justify-content-end align-items-center" float:"right" style="margin-left: auto">
-				<%= button_to "All Games", { :controller => "games", :action => "index" }, :method => :get %>
                 <%= form_tag(search_games_path, method: :get, class: "search-form") do %>
 					<%= text_field_tag(:search, params[:search]) %>
 					<%= submit_tag ("Search") %>
