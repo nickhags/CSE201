@@ -3,22 +3,21 @@ Sierra Store is a video game database where users can search games across numero
 
 Sierra Store makes finding games simple.
 
-![](http://gdur.com//Nc8o)
+![](http://gdurl.com/Nc8o)
 
 
 ## Getting Started
-Install Ruby. Click here and install the version for your device (e.g Windows, Mac, Linux)
+Install Ruby.Click [here](https://www.ruby-lang.org/en/downloads/) and install the version for your device (e.g Windows, Mac, Linux)
 
 ## Built With
 Ruby -
-Javascript -
+JavaScript -
 HTML -
 
 ## Developers
 
-Tommy Waite - Project Manager
-Nick Hagerty - Technical Manager
-Junyu Yan - Developer & Tester
-Xuyang Zou - Developer & Tester
-Kevin Reed - Developer & Tester
-
+- Tommy Waite - Project Manager
+- Nick Hagerty - Technical Manager
+- Junyu Yan - Developer & Tester
+- Xuyang Zou - Developer & Tester
+- Kevin Reed - Developer & Tester
