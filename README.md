@@ -10,9 +10,9 @@ Sierra Store makes finding games simple.
 Install Ruby. Click [here](https://www.ruby-lang.org/en/downloads/) and install the version for your device (e.g Windows, Mac, Linux)
 
 ## Built With
-- Ruby -
-- JavaScript -
-- HTML -
+- Ruby - Object Oriented Programming language used for the backend
+- JavaScript - Programmed the behavior of the web pages
+- HTML - Defined the content and layout of the web pages
 
 ## Developers
 
