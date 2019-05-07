@@ -7,12 +7,12 @@ Sierra Store makes finding games simple.
 
 
 ## Getting Started
-Install Ruby.Click [here](https://www.ruby-lang.org/en/downloads/) and install the version for your device (e.g Windows, Mac, Linux)
+Install Ruby. Click [here](https://www.ruby-lang.org/en/downloads/) and install the version for your device (e.g Windows, Mac, Linux)
 
 ## Built With
-Ruby -
-JavaScript -
-HTML -
+- Ruby -
+- JavaScript -
+- HTML -
 
 ## Developers
 
